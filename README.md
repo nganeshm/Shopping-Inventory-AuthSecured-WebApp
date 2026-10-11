@@ -5,12 +5,6 @@
   React storefront + Spring Cloud JWT microservices — one gateway, many services.
 </p>
 
-<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/17a63eee-5f99-46ec-b486-a9893cc401d3" />
-<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/5a237736-5197-4817-8a14-c592aa60ff97" />
-<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/b7d7cdaa-df02-4029-82b4-176f302939a5" />
-<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/dd476e6e-4c78-42d3-8279-62875e15423b" />
-![Uploading image.png…]()
-
 
 <p align="center">
   <img alt="React" src="https://img.shields.io/badge/🎨_UI-React_18-61DAFB?logo=react&logoColor=black" />
@@ -54,6 +48,13 @@ The browser talks to **one** URL: the API gateway on `:8080`. Login, catalog, ca
 11. [🩺 Troubleshooting](#-troubleshooting)
 
 ---
+
+
+<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/17a63eee-5f99-46ec-b486-a9893cc401d3" />
+<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/5a237736-5197-4817-8a14-c592aa60ff97" />
+<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/b7d7cdaa-df02-4029-82b4-176f302939a5" />
+<img width="1909" height="959" alt="image" src="https://github.com/user-attachments/assets/dd476e6e-4c78-42d3-8279-62875e15423b" />
+![Uploading image.png…]()
 
 ## ✨ Features
 
