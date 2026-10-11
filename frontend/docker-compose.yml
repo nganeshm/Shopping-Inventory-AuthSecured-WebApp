@@ -1,0 +1,11 @@
+services:
+  storefront:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # URL the *browser* uses to reach the API gateway (not an in-container hostname).
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8080}
+    ports:
+      - "${STOREFRONT_PORT:-8081}:80"
+    restart: unless-stopped
