@@ -1,4 +1,4 @@
-# SecureAuth Enterprise Platform
+# Shopping-Inventory-Order-Management Enterprise Platform
 
 A practical, runnable multi-module project demonstrating Spring Boot, Spring
 Security + JWT authentication at every layer (gateway edge check +
