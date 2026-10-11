@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ganesh</groupId>
+    <artifactId>secureauth-enterprise-platform</artifactId>
+    <version>2.0.0</version>
+    <packaging>pom</packaging>
+    <name>SecureAuth Enterprise Platform</name>
+    <description>
+        Enterprise-style, cloud-native, JWT-authenticated microservices
+        platform: Eureka service discovery, API Gateway with token
+        verification at the edge, independently-owned PostgreSQL databases
+        per service, Spring Security on every service, Resilience4j,
+        OpenFeign, and a SOLID/SOA-aligned layered architecture.
+    </description>
+
+    <!--
+        SOA principle demonstrated at the build level: every service is an
+        independently deployable/buildable module (its own pom, own jar, own
+        datasource) even though they share common dependency versions here.
+        No service module depends on another service module's code — only on
+        its published HTTP contract (Feign client + DTOs), which is what keeps
+        them loosely coupled.
+    -->
+    <modules>
+        <module>eureka-server</module>
+        <module>api-gateway</module>
+        <module>auth-service</module>
+        <module>email-service</module>
+        <module>product-service</module>
+        <module>product-import-job</module>
+        <module>customer-service</module>
+    </modules>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot.version>3.3.4</spring-boot.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

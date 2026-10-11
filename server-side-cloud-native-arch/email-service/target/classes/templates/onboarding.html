@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{subject}}</title>
+</head>
+<body style="margin:0;padding:0;background:#0f172a;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#0f172a;padding:32px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="560" cellspacing="0" cellpadding="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;">
+          <tr>
+            <td style="background:linear-gradient(135deg,#4f46e5,#7c3aed);padding:28px 32px;color:#ffffff;">
+              <table role="presentation" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="width:48px;height:48px;background:#ffffff;border-radius:12px;text-align:center;vertical-align:middle;font-size:26px;line-height:48px;">
+                    &#128722;
+                  </td>
+                  <td style="padding-left:12px;">
+                    <p style="margin:0;font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.85;">&#128722; E-Market Place</p>
+                    <h1 style="margin:8px 0 0;font-size:24px;font-weight:700;">Welcome aboard, {{username}}</h1>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px;">
+              <p style="margin:0 0 12px;color:#334155;font-size:16px;line-height:1.5;">
+                Your &#128722; cart is ready. Thanks for joining E-Market Place with
+                <strong>{{email}}</strong>. Enter this code to finish onboarding.
+              </p>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="center" style="padding:20px 0;">
+                    <div style="display:inline-block;background:#eef2ff;border:2px dashed #6366f1;border-radius:12px;padding:16px 28px;">
+                      <p style="margin:0 0 6px;color:#4338ca;font-size:12px;letter-spacing:1px;text-transform:uppercase;">&#128230; Verification code</p>
+                      <p style="margin:0;color:#1e1b4b;font-size:32px;font-weight:700;letter-spacing:8px;">{{otp}}</p>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0 0 8px;color:#64748b;font-size:14px;">
+                This code expires in <strong>{{ttlMinutes}} minutes</strong>.
+              </p>
+              <p style="margin:0;color:#94a3b8;font-size:13px;">
+                If you did not register, you can ignore this email.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background:#f8fafc;padding:16px 32px;color:#94a3b8;font-size:12px;">
+              &#128722; E-Market Place &nbsp;·&nbsp; {{subject}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,4 @@
+com/app/gateway/ApiGatewayApplication.class
+com/app/gateway/filter/JwtAuthenticationFilter.class
+com/app/gateway/controller/FallbackController.class
+com/app/gateway/config/GatewayRouteConfig.class

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ganesh</groupId>
+        <artifactId>secureauth-enterprise-platform</artifactId>
+        <version>2.0.0</version>
+    </parent>
+
+    <artifactId>product-import-job</artifactId>
+    <packaging>jar</packaging>
+    <name>product-import-job</name>
+    <description>
+        Spark batch job that reads a product CSV with the local Spark 4.2 install.
+        Spark is provided by spark-submit (/opt/spark/jars), so this jar stays thin
+        and is not loaded inside product-service.
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.13</artifactId>
+            <version>4.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

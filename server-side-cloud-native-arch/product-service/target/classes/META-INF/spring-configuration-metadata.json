@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "product.import",
+      "type": "com.app.product.config.ProductImportProperties",
+      "sourceType": "com.app.product.config.ProductImportProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "product.import.job-jar",
+      "type": "java.lang.String",
+      "sourceType": "com.app.product.config.ProductImportProperties"
+    },
+    {
+      "name": "product.import.spark-submit",
+      "type": "java.lang.String",
+      "sourceType": "com.app.product.config.ProductImportProperties"
+    },
+    {
+      "name": "product.import.storage-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.app.product.config.ProductImportProperties"
+    }
+  ],
+  "hints": []
+}

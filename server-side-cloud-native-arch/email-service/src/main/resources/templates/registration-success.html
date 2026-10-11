@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{subject}}</title>
+  <style>
+    @keyframes emp-pop {
+      0% { transform: scale(0.55); opacity: 0; }
+      70% { transform: scale(1.12); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes emp-pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16,185,129,0.45); }
+      50% { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(16,185,129,0); }
+    }
+    @keyframes emp-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    @keyframes emp-sparkle {
+      0%, 100% { opacity: 0.35; transform: scale(0.85) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.25) rotate(18deg); }
+    }
+    @keyframes emp-float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.95; }
+      100% { transform: translateY(18px) rotate(160deg); opacity: 0.25; }
+    }
+    @keyframes emp-shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .emp-badge { animation: emp-pop 0.7s ease-out, emp-pulse 1.8s ease-in-out 0.7s infinite; }
+    .emp-bounce { display: inline-block; animation: emp-bounce 1.5s ease-in-out infinite; }
+    .emp-sparkle { display: inline-block; animation: emp-sparkle 1.6s ease-in-out infinite; }
+    .emp-float { display: inline-block; animation: emp-float 2.2s linear infinite; }
+    .emp-hero {
+      background: linear-gradient(120deg,#059669,#10b981,#34d399,#059669);
+      background-size: 240% 240%;
+      animation: emp-shimmer 5s ease infinite;
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#042f2e;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#042f2e;padding:32px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="560" cellspacing="0" cellpadding="0" style="max-width:560px;background:#ffffff;border-radius:20px;overflow:hidden;">
+          <tr>
+            <td class="emp-hero" style="padding:36px 32px 28px;color:#ffffff;text-align:center;">
+              <p style="margin:0 0 16px;font-size:22px;letter-spacing:6px;">
+                <span class="emp-float">&#127881;</span>
+                <span class="emp-float" style="animation-delay:.2s;">&#10024;</span>
+                <span class="emp-float" style="animation-delay:.4s;">&#127882;</span>
+                <span class="emp-float" style="animation-delay:.6s;">&#127775;</span>
+              </p>
+              <div class="emp-badge" style="width:84px;height:84px;margin:0 auto 16px;background:#ffffff;border-radius:50%;line-height:84px;font-size:42px;">
+                &#9989;
+              </div>
+              <p style="margin:0;font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.9;">
+                <span class="emp-bounce">&#128722;</span> E-Market Place
+              </p>
+              <h1 style="margin:10px 0 0;font-size:28px;font-weight:700;line-height:1.25;">
+                Congratulations, {{username}}!
+              </h1>
+              <p style="margin:10px 0 0;font-size:16px;opacity:.95;">
+                Your registration is complete. Welcome to the marketplace.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px 32px 8px;">
+              <p style="margin:0 0 20px;color:#334155;font-size:16px;line-height:1.6;">
+                Great news — <strong>{{email}}</strong> is verified and your shopper
+                profile is live. Your cart, saved addresses, and deals are ready.
+              </p>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="25%" align="center" style="padding:8px 4px;">
+                    <div class="emp-bounce" style="width:52px;height:52px;background:#ecfdf5;border-radius:14px;line-height:52px;font-size:24px;">&#128722;</div>
+                    <p style="margin:8px 0 0;color:#047857;font-size:12px;font-weight:700;">Shop</p>
+                  </td>
+                  <td width="25%" align="center" style="padding:8px 4px;">
+                    <div class="emp-bounce" style="width:52px;height:52px;background:#eff6ff;border-radius:14px;line-height:52px;font-size:24px;animation-delay:.15s;">&#128230;</div>
+                    <p style="margin:8px 0 0;color:#1d4ed8;font-size:12px;font-weight:700;">Track</p>
+                  </td>
+                  <td width="25%" align="center" style="padding:8px 4px;">
+                    <div class="emp-bounce" style="width:52px;height:52px;background:#fff7ed;border-radius:14px;line-height:52px;font-size:24px;animation-delay:.3s;">&#127873;</div>
+                    <p style="margin:8px 0 0;color:#c2410c;font-size:12px;font-weight:700;">Deals</p>
+                  </td>
+                  <td width="25%" align="center" style="padding:8px 4px;">
+                    <div class="emp-bounce" style="width:52px;height:52px;background:#f5f3ff;border-radius:14px;line-height:52px;font-size:24px;animation-delay:.45s;">&#127942;</div>
+                    <p style="margin:8px 0 0;color:#6d28d9;font-size:12px;font-weight:700;">Rewards</p>
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:20px;">
+                <tr>
+                  <td align="center" style="padding:8px 0 20px;">
+                    <div style="display:inline-block;background:#ecfdf5;border:2px solid #10b981;border-radius:999px;padding:12px 28px;color:#065f46;font-size:15px;font-weight:700;">
+                      <span class="emp-sparkle">&#10024;</span>
+                      You are all set — sign in and start shopping
+                      <span class="emp-sparkle" style="animation-delay:.4s;">&#10024;</span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0;color:#94a3b8;font-size:13px;text-align:center;">
+                If this was not you, contact support and we will lock the account.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background:#f0fdf4;padding:16px 32px;color:#64748b;font-size:12px;text-align:center;">
+              <span class="emp-bounce">&#128722;</span>
+              E-Market Place &nbsp;·&nbsp; {{subject}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

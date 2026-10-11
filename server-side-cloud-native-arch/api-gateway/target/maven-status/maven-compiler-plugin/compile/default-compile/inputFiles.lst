@@ -1,0 +1,4 @@
+/home/ganeshn/Desktop/secureauth-enterprise-platform/api-gateway/src/main/java/com/app/gateway/config/GatewayRouteConfig.java
+/home/ganeshn/Desktop/secureauth-enterprise-platform/api-gateway/src/main/java/com/app/gateway/ApiGatewayApplication.java
+/home/ganeshn/Desktop/secureauth-enterprise-platform/api-gateway/src/main/java/com/app/gateway/controller/FallbackController.java
+/home/ganeshn/Desktop/secureauth-enterprise-platform/api-gateway/src/main/java/com/app/gateway/filter/JwtAuthenticationFilter.java

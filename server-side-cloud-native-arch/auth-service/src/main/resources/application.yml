@@ -1,0 +1,59 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: auth-service
+  profiles:
+    active: dev
+  datasource:
+    # Local PostgreSQL — "database per service": only auth-service ever
+    # connects to authdb.
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: ${DB_USERNAME:authappdb}
+    password: ${DB_PASSWORD:PASS123}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      # update: convenient for local dev so entity changes reflect in the
+      # schema automatically. In real prod this would be "validate" and
+      # schema changes would go through Flyway/Liquibase migrations instead.
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    open-in-view: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+email:
+  internal-key: ${EMAIL_INTERNAL_KEY:local-email-key}
+  otp-ttl-minutes: 10
+
+feign:
+  client:
+    config:
+      email-service:
+        connectTimeout: 3000
+        readTimeout: 3000
+
+jwt:
+  # Shared across auth-service / product-service / customer-service so each
+  # can independently verify a token's signature without calling back to
+  # auth-service. In real prod this would come from a secrets manager, not
+  # plain yml.
+  secret: "ThisIsADemoSecretKeyForJWTSigningPleaseChangeInProd1234567890"
+  expiration-ms: 3600000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,31 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: email-service
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ganeshnarangle@gmail.com
+    password: fclzmpzdrzrcmsix
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+email:
+  from: your-gmail@gmail.com
+  internal-key: local-email-key
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

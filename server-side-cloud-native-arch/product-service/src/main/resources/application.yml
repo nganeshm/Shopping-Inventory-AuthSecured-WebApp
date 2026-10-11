@@ -1,0 +1,97 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: product-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/productdb
+    username: ${DB_USERNAME:authappdb}
+    password: ${DB_PASSWORD:PASS123}
+    driver-class-name: org.postgresql.Driver
+  data:
+    redis:
+      # Redis is an accelerator, not a dependency. If localhost:6379 is down
+      # the service still starts and serves catalog reads from PostgreSQL.
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      connect-timeout: 2s
+      timeout: 2s
+      repositories:
+        enabled: false
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          # 0 so startup does not pre-create connections to a missing Redis.
+          min-idle: 0
+          max-wait: 1s
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    open-in-view: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+# Local Spark 4.2 (/opt/spark) reads the CSV. This service only persists the result.
+product:
+  import:
+    storage-dir: /tmp/product-imports
+    spark-submit: /opt/spark/bin/spark-submit
+    job-jar: product-import-job/target/product-import-job-2.0.0.jar
+
+jwt:
+  secret: "ThisIsADemoSecretKeyForJWTSigningPleaseChangeInProd1234567890"
+
+# --- Resilience4j: circuit breaker + retry wrapping the Feign call to customer-service ---
+resilience4j:
+  circuitbreaker:
+    instances:
+      customerServiceCB:
+        register-health-indicator: true
+        sliding-window-size: 10          # evaluate failure rate over the last 10 calls
+        minimum-number-of-calls: 5        # don't trip until at least 5 calls have been made
+        failure-rate-threshold: 50        # OPEN the breaker if >= 50% of those calls fail
+        wait-duration-in-open-state: 10s  # stay OPEN this long before trying again
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+  retry:
+    instances:
+      customerServiceCB:
+        max-attempts: 3
+        wait-duration: 500ms
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+
+feign:
+  client:
+    config:
+      customer-service:
+        connectTimeout: 3000
+        readTimeout: 3000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers
+  health:
+    redis:
+      enabled: false
+    circuitbreakers:
+      enabled: true

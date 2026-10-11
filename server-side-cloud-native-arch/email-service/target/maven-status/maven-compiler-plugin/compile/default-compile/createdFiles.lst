@@ -1,0 +1,8 @@
+com/app/email/dto/SendOtpEmailRequest.class
+com/app/email/controller/EmailController.class
+com/app/email/service/MailDispatchService.class
+com/app/email/EmailServiceApplication.class
+com/app/email/dto/SendWelcomeEmailRequest.class
+com/app/email/template/EmailTemplateType.class
+com/app/email/filter/InternalKeyFilter.class
+com/app/email/template/EmailTemplateRenderer.class
