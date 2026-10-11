@@ -29,18 +29,22 @@ function persistSession(token, claims) {
  * sessionStorage (username, email, roles) for profile lookup by email.
  */
 function readStoredAuth() {
-  const token = localStorage.getItem('sa_token')
-  if (!token) return { token: null, claims: null }
-  const claims = decodeJwt(token)
-  if (!claims || isExpired(claims)) {
-    localStorage.removeItem('sa_token')
-    clearSession()
+  try {
+    const token = localStorage.getItem('sa_token')
+    if (!token) return { token: null, claims: null }
+    const claims = decodeJwt(token)
+    if (!claims || isExpired(claims)) {
+      localStorage.removeItem('sa_token')
+      clearSession()
+      return { token: null, claims: null }
+    }
+    if (!readSession()?.email && claims.email) {
+      persistSession(token, claims)
+    }
+    return { token, claims }
+  } catch {
     return { token: null, claims: null }
   }
-  if (!readSession()?.email && claims.email) {
-    persistSession(token, claims)
-  }
-  return { token, claims }
 }
 
 export function AuthProvider({ children }) {
